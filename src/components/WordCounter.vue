@@ -3,9 +3,7 @@
     <div class="count-positive" v-if="count > 0">
       <span>
         <span class="count-number">{{ count }}</span>
-        <span v-if="count === 1"> word </span>
-        <span v-else> words </span>
-        registered
+        <span> word<span v-if="count > 1">s</span> registered</span>
       </span>
     </div>
     <div class="count-empy" v-if="count === 0">
