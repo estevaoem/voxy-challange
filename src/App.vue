@@ -1,15 +1,15 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <PageCounter msg="Voxy word counter" />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import PageCounter from "./components/PageContents.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    PageCounter,
   },
 };
 </script>
