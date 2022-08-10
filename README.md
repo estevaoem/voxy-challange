@@ -22,7 +22,7 @@ Run on the project root from terminal
 docker-compose up
 ```
 
-And watch for the Network address that pops on the terminal. Will be something like this:
+And watch for the network addresses that pops on the terminal. Will be something like this:
 
 ```
 vue_dev_app |   App running at:
@@ -30,7 +30,7 @@ vue_dev_app |   - Local:   http://localhost:8080/
 vue_dev_app |   - Network: http://192.168.0.2:8080/
 ```
 
-That way, `http://192.168.0.2:8080/` is the serving address to be entered in your browser.
+Both Local and Network addresses can be entered on the browser, `Local` beeing your localhost and Network beeing the docker container address (to check it, run `docker container inspect vue_dev_app`)
 
 ## Container for production
 
