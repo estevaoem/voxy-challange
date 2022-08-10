@@ -11,25 +11,50 @@
       />
     </form>
   </div>
+  <WordCounter :count="count" />
 </template>
 
 <script>
+import WordCounter from "./WordCounter.vue";
+
 export default {
   name: "PageContents",
+  components: {
+    WordCounter,
+  },
+  data() {
+    return {
+      count: -1,
+      symbols: new RegExp("^.*[-!$@%^&*()_+|~=`{}[\\]:\";'<>?,.\\/]+.*$"),
+    };
+  },
   props: {
     msg: String,
   },
   methods: {
     countWords(event) {
       const sentence = event.target.elements.formData.value;
-      const words = sentence.split(" ");
-      const wordCount = words.length;
+      const wordCandidates = sentence.split(" ");
 
-      if (words.length === 1 && words[0] === "") {
-        console.log("Form can't be empty");
-      } else {
-        console.log(`${wordCount} word(s) registered`);
+      const words = [];
+
+      for (const word of wordCandidates) {
+        if (this.symbols.test(word)) {
+          for (const letter of word) {
+            if (!this.symbols.test(letter)) {
+              words.push(word);
+              break;
+            }
+          }
+          continue;
+        }
+        if (word === "") {
+          continue;
+        }
+        words.push(word);
       }
+
+      this.count = words.length;
     },
   },
 };
